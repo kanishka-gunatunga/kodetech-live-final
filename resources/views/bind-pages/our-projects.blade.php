@@ -181,7 +181,7 @@ $projects = Project::all();
     <!-- Portfolio Section End -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const itemsPerPage = 8;
+            const itemsPerPage = 9;
             const portfolioGrid = document.getElementById("portfolio-grid");
             const items = Array.from(portfolioGrid.children);
             const paginationContainer = document.getElementById("pagination");

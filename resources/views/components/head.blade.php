@@ -35,28 +35,50 @@
 
     <!-- Production css -->
     <!-- <link rel="stylesheet" href="assets/css/style.min.css"> -->
-    <style>
-      #fixedWhatsAppIcon {
-    display: block;
+<style>
+#fixedWhatsAppIcon {
     position: fixed;
     right: 20px;
     bottom: 30px;
-    width: 70px;
-    height: 70px;
+    height: 60px;
+    padding: 0 18px;
     background-color: #25D366;
-    text-align: center;
-    line-height: 70px !important;
     color: #fff;
-    border-radius: 50%;
-    font-size: 40px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
     z-index: 9999;
+    text-decoration: none;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
 }
+
+#fixedWhatsAppIcon i {
+    font-size: 30px;
+}
+
 #fixedWhatsAppIcon:hover {
-  background-color: #075E54;
+    background-color: #075E54;
 }
-#fixedWhatsAppIcon .fa-whatsapp {
-  line-height: 70px !important;
+@media (max-width: 640px) {
+#fixedWhatsAppIcon {
+    height: 30px;
+    padding: 0 10px;
+    font-size: 12px;
 }
-    </style>
+#fixedWhatsAppIcon i {
+    font-size: 18px;
+}
+}
+</style>
+
 </head>
-<a href="https://wa.me/94707775264?text=Hello%20I%20would%20like%20to%20contact%20you" id="fixedWhatsAppIcon" class="wow zoomIn" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+<a href="https://wa.me/94707775264?text=Hello%20I%20would%20like%20to%20contact%20you"
+   id="fixedWhatsAppIcon"
+   class="wow zoomIn"
+   target="_blank">
+    <i class="fa-brands fa-whatsapp"></i>
+    <span>Chat with us</span>
+</a>
