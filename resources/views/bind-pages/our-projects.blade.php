@@ -95,7 +95,7 @@ $projects = Project::all();
                 </style>
                 <div class="my-10 lg:my-[60px] xl:my-20">
                     <!-- Portfolio List -->
-                    <div id="portfolio-grid" class="grid gap-8 md:grid-cols-2 lg:gap-10 xl:gap-[60px]">
+                    <div id="portfolio-grid" class="grid gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-10 xl:gap-[60px]">
                         <!-- Portfolio Item -->
 
                         @foreach ($projects as $project)
