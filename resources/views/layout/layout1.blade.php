@@ -231,7 +231,12 @@ $services = Service::all();
     aria-label="linkedin">
     <i class="fa-brands fa-linkedin-in"></i>
 </a>
-
+<a href="https://wa.me/94707775264?text=Hello%20I%20would%20like%20to%20contact%20you" target="_blank"
+    rel="noopener noreferrer"
+    class="flex h-[30px] w-[30px] items-center justify-center rounded-[50%] bg-[#FDFBF9]/10 text-sm text-white transition-all duration-300 hover:bg-ColorAtomicTangerine hover:text-[#1B1C1D]"
+    aria-label="whatsapp">
+    <i class="fa-brands fa-whatsapp"></i>
+</a>
                                             {{-- <a href="https://www.github.com/" target="_blank" rel="noopener noreferrer"
                                                 class="flex h-[30px] w-[30px] items-center justify-center rounded-[50%] bg-[#FDFBF9]/10 text-sm text-white transition-all duration-300 hover:bg-ColorAtomicTangerine hover:text-[#1B1C1D]"
                                                 aria-label="github">
