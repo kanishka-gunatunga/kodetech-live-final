@@ -45,7 +45,7 @@
     height: 70px;
     background-color: #25D366;
     text-align: center;
-    line-height: 70px;
+    line-height: 70px !important;
     color: #fff;
     border-radius: 50%;
     font-size: 40px;
@@ -54,7 +54,9 @@
 #fixedWhatsAppIcon:hover {
   background-color: #075E54;
 }
-
+#fixedWhatsAppIcon .fa-whatsapp {
+  line-height: 70px !important;
+}
     </style>
 </head>
 <a href="https://wa.me/94707775264?text=Hello%20I%20would%20like%20to%20contact%20you" id="fixedWhatsAppIcon" class="wow zoomIn" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
