@@ -381,9 +381,9 @@ $services = Service::all();
                                     <ul class="sub-menu" id="submenu-2">
 
                                         @foreach ($services as $service)
-                                        <li class="sub-menu--item"><a
-                                                href="{{ route('ServicesShow', $service->slug) }}">{{ $service->service_name }}</a>
-                                        </li>
+                                            <li class="sub-menu--item"><a
+                                                    href="{{ route('ServicesShow', $service->slug) }}">{{ $service->service_name }}</a>
+                                            </li>
                                         @endforeach
 
 
@@ -401,19 +401,19 @@ $services = Service::all();
                                 <li class="sub-menu--item">
                                     <a href="{{ url('/blockchain') }}">Blockchain Development</a>
                                 </li> --}}
-                            </ul>
-                            </li>
-                            <li class="nav-item nav-item-has-children">
-                                <a class="nav-link-item drop-trigger">Our Products
-                                    <i class="fa-solid fa-angle-down"></i>
-                                </a>
-                                <ul class="sub-menu" id="submenu-3">
-                                    @foreach ($products as $product)
-                                    <li class="sub-menu--item"><a
-                                            href="{{ route('product.show', $product->slug) }}">{{ $product->product_name }}</a>
-                                    </li>
-                                    @endforeach
-                                    {{-- <li class="sub-menu--item">
+                                    </ul>
+                                </li>
+                                <li class="nav-item nav-item-has-children">
+                                    <a class="nav-link-item drop-trigger">Our Products
+                                        <i class="fa-solid fa-angle-down"></i>
+                                    </a>
+                                    <ul class="sub-menu" id="submenu-3">
+                                        @foreach ($products as $product)
+                                            <li class="sub-menu--item"><a
+                                                    href="{{ route('product.show', $product->slug) }}">{{ $product->product_name }}</a>
+                                            </li>
+                                        @endforeach
+                                        {{-- <li class="sub-menu--item">
                                             <a href="{{ url('/dms') }}">Document Management System (DMS)</a>
                             </li>
                             <li class="sub-menu--item">
@@ -428,21 +428,21 @@ $services = Service::all();
                             <li class="sub-menu--item">
                                 <a href="{{ url('/ecommerce') }}">E-Commerce solutions</a>
                             </li> --}}
-                            </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('our-projects') }}" class="nav-link-item">Our Projects</a>
-                            </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('our-projects') }}" class="nav-link-item">Our Projects</a>
+                                </li>
 
-                            {{-- <li class="nav-item">
+                                {{-- <li class="nav-item">
                                     <a href="{{ route('blog') }}" class="nav-link-item">Blogs</a>
                             </li> --}}
-                            <li class=" contact-on-mobile px-4">
-                                <a href="{{ url('contact') }}"
-                                    class="btn is-blue is-rounded btn-animation group mt-2">
-                                    <span>Contact Us</span>
-                                </a>
-                            </li>
+                                <li class=" contact-on-mobile px-4">
+                                    <a href="{{ url('contact') }}"
+                                        class="btn is-blue is-rounded btn-animation group mt-2">
+                                        <span>Contact Us</span>
+                                    </a>
+                                </li>
                             </ul>
 
                         </nav>
@@ -481,7 +481,7 @@ $services = Service::all();
                                     </p>
                                 </div>
                                 <div class="">
-                                    <a href="{{url('/contact')}}"
+                                    <a href="{{ url('/contact') }}"
                                         class="btn is-lime is-large btn-animation group inline-block rounded-[3px]"><span>Contact
                                             us</span></a>
                                 </div>
@@ -513,7 +513,9 @@ $services = Service::all();
                                         <!-- Footer About Text -->
                                         <div class="lg:max-w-[416px]">
                                             <!--Kode Tech (Pvt) Ltd is a well-established and renowned software development company with a rich legacy spanning over 14 years. -->
-                                            We innovate the future with cutting-edge web development, AI solutions, and digital transformation services. Trusted by businesses worldwide, we deliver with a strong focus on quality and customer satisfaction.
+                                            We innovate the future with cutting-edge web development, AI solutions, and
+                                            digital transformation services. Trusted by businesses worldwide, we deliver
+                                            with a strong focus on quality and customer satisfaction.
                                         </div>
                                         <!-- Footer Mail -->
                                         <a href="mailto:info@kodetech.co"
@@ -618,11 +620,11 @@ $services = Service::all();
                                     <!-- Footer Navbar -->
                                     <ul class="flex flex-col gap-y-[10px] capitalize footer-ul">
                                         @foreach ($services as $service)
-                                        <li>
-                                            <a href="{{ route('ServicesShow', $service->slug) }}"
-                                                class="hover:opcity-100 text-[#FDFBF9]/80 underline-offset-4 transition-all duration-300 ease-linear hover:underline"
-                                                style="color: #939393 !important">{{ $service->service_name }}</a>
-                                        </li>
+                                            <li>
+                                                <a href="{{ route('ServicesShow', $service->slug) }}"
+                                                    class="hover:opcity-100 text-[#FDFBF9]/80 underline-offset-4 transition-all duration-300 ease-linear hover:underline"
+                                                    style="color: #939393 !important">{{ $service->service_name }}</a>
+                                            </li>
                                         @endforeach
                                     </ul>
                                 </div>
@@ -639,13 +641,12 @@ $services = Service::all();
                                     <!-- Footer Navbar -->
                                     <ul class="flex flex-col gap-y-[10px] capitalize footer-ul">
                                         @foreach ($products as $product)
-
-                                        <li>
-                                            <a href="{{ route('product.show', $product->slug) }}"
-                                                rel="noopener noreferrer"
-                                                class="hover:opcity-100 text-[#FDFBF9]/80 underline-offset-4 transition-all duration-300 ease-linear hover:underline"
-                                                style="color: #939393 !important">{{$product->product_name}}</a>
-                                        </li>
+                                            <li>
+                                                <a href="{{ route('product.show', $product->slug) }}"
+                                                    rel="noopener noreferrer"
+                                                    class="hover:opcity-100 text-[#FDFBF9]/80 underline-offset-4 transition-all duration-300 ease-linear hover:underline"
+                                                    style="color: #939393 !important">{{ $product->product_name }}</a>
+                                            </li>
                                         @endforeach
 
                                     </ul>
@@ -700,9 +701,14 @@ $services = Service::all();
     <button id="inquiryBtn" class="inquiry-btn">
         <span class="btn-text">INQUIRIES</span>
         <span class="btn-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="19" viewBox="0 0 25 19" fill="none">
-                <path d="M12.3497 0.949997L13.6797 2.375L6.64969 9.5L13.6797 16.625L12.3497 18.05L3.79969 9.5L12.3497 0.949997Z" fill="#F90305" />
-                <path d="M18.2872 0.949997L19.6172 2.375L12.5872 9.5L19.6172 16.625L18.2872 18.05L9.73719 9.5L18.2872 0.949997Z" fill="#F90305" />
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="19" viewBox="0 0 25 19"
+                fill="none">
+                <path
+                    d="M12.3497 0.949997L13.6797 2.375L6.64969 9.5L13.6797 16.625L12.3497 18.05L3.79969 9.5L12.3497 0.949997Z"
+                    fill="#F90305" />
+                <path
+                    d="M18.2872 0.949997L19.6172 2.375L12.5872 9.5L19.6172 16.625L18.2872 18.05L9.73719 9.5L18.2872 0.949997Z"
+                    fill="#F90305" />
             </svg>
         </span>
     </button>
@@ -715,7 +721,8 @@ $services = Service::all();
         <div class="inquiry-panel-content">
             <!-- Close Button -->
             <button id="closeInquiry" class="close-inquiry-btn">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
                     <path d="M18 6L6 18M6 6L18 18" stroke="white" stroke-width="2" stroke-linecap="round" />
                 </svg>
             </button>
@@ -726,8 +733,20 @@ $services = Service::all();
                 <p>Have a question? Fill out the form below and we'll get back to you as soon as possible.</p>
             </div>
 
+            @if (session('success'))
+                <div style="color: #00ff99; margin-bottom: 15px;">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            @if ($errors->any())
+                <div style="color: #ff4d4d; margin-bottom: 15px;">
+                    Please fix the errors and try again.
+                </div>
+            @endif
+
             <!-- Inquiry Form -->
-            <form action="{{ route('mailSubmit') }}" method="POST" class="inquiry-form">
+            <form action="{{ route('inquiry.submit') }}" method="POST" class="inquiry-form">
                 @csrf
 
                 <div class="form-group">
@@ -737,12 +756,14 @@ $services = Service::all();
 
                 <div class="form-group">
                     <label for="contact">Contact No<span class="required">*</span></label>
-                    <input type="tel" id="contact" name="contact" placeholder="+94 7 1234 5678" required>
+                    <input type="tel" id="contact" name="contact" pattern="^\+?[0-9]{7,15}$" maxlength="16"
+                        placeholder="+94 7 1234 5678" required>
                 </div>
 
                 <div class="form-group">
                     <label for="email">Email<span class="required">*</span></label>
-                    <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                    <input type="email" id="email" name="email" placeholder="your.email@example.com"
+                        required>
                 </div>
 
                 <div class="form-group">
@@ -753,8 +774,21 @@ $services = Service::all();
                 <div class="form-group checkbox-group">
                     <label class="checkbox-label">
                         <input type="checkbox" required>
-                        <span class="checkbox-text">I agree to the <a href="{{ url('/privacy') }}" target="_blank">privacy policy</a> and consent to the handling of my personal information.</span>
+                        <span class="checkbox-text">I agree to the <a href="{{ url('/privacy') }}"
+                                target="_blank">privacy policy</a> and consent to the handling of my personal
+                            information.</span>
                     </label>
+                </div>
+
+                <div class="form-group">
+                    <div class="g-recaptcha" data-sitekey="6LdUdJ0rAAAAAATp6GXxQOSnhz6E_yOdR7Uj3f47">
+                    </div>
+
+                    @if ($errors->has('g-recaptcha-response'))
+                        <p style="color:red;">
+                            {{ $errors->first('g-recaptcha-response') }}
+                        </p>
+                    @endif
                 </div>
 
                 <button type="submit" class="submit-inquiry-btn">Submit Inquiry</button>
@@ -766,6 +800,8 @@ $services = Service::all();
 
 
     <x-scripts />
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
     <!-- for inquiry side panel -->
     <script>
