@@ -55,4 +55,5 @@ Route::get('/careers/{slug}', [SlugController::class, 'CareerShow'])->name('Care
 Route::post('/mailSubmit', [MailController::class, 'mailSubmit'])->name('mailSubmit');
 Route::post('/mailSubmitOnCareers', [MailController::class, 'mailSubmitOnCareers'])->name('mailSubmitOnCareers');
 
-
+Route::post('/submit-inquiry', [MailController::class, 'inquirySubmit'])
+    ->name('inquiry.submit');

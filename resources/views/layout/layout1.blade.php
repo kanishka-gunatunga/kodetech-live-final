@@ -1,4 +1,5 @@
 <?php
+
 use App\Models\Product;
 use App\Models\Project;
 use App\Models\Service;
@@ -23,18 +24,324 @@ $services = Service::all();
                     display: none !important;
                 }
             }
+
+            /* Floating Button */
+            .inquiry-btn {
+                position: fixed;
+                top: 50%;
+                right: 0;
+                transform: translateY(-50%);
+                background: #1B1B1B;
+                color: #fff;
+                width: 55px;
+                height: 180px;
+                border: none;
+                cursor: pointer;
+                z-index: 9999;
+                box-shadow: -4px 0 15px rgba(0, 0, 0, 0.3);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 12px;
+                border-radius: 14px 0 0 14px;
+                transition: all 0.3s ease;
+            }
+
+            .btn-text {
+                writing-mode: vertical-rl;
+                text-orientation: mixed;
+                font-size: 16px;
+                font-weight: 400;
+                letter-spacing: 3px;
+                font-family: Inter, sans-serif;
+            }
+
+            .btn-icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #F90305;
+            }
+
+            .btn-icon svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            /* Overlay */
+            .inquiry-overlay {
+                position: fixed;
+                inset: 0;
+                background: rgba(0, 0, 0, 0.6);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+                z-index: 9998;
+                backdrop-filter: blur(2px);
+            }
+
+            .inquiry-overlay.active {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            /* Side Panel */
+            .inquiry-panel {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                max-width: 600px;
+                height: 100vh;
+                background: #1B1B1B;
+                z-index: 9999;
+                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
+                overflow-y: auto;
+            }
+
+            .inquiry-panel.active {
+                right: 0;
+            }
+
+            /* Panel Content */
+            .inquiry-panel-content {
+                position: relative;
+                padding: 40px 30px;
+                color: #fff;
+            }
+
+            /* Close Button */
+            .close-inquiry-btn {
+                position: absolute;
+                top: 25px;
+                right: 25px;
+                background: transparent;
+                border: none;
+                cursor: pointer;
+                padding: 8px;
+                transition: transform 0.2s ease;
+                z-index: 10;
+            }
+
+            .close-inquiry-btn:hover {
+                transform: scale(1.1);
+            }
+
+            /* Panel Header */
+            .inquiry-panel-header {
+                margin-bottom: 35px;
+            }
+
+            .inquiry-panel-header h2 {
+                font-family: Arial, sans-serif;
+                font-size: 28px;
+                font-weight: 400;
+                margin-bottom: 15px;
+                color: #fff;
+            }
+
+            .inquiry-panel-header p {
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 1.6;
+                color: #A9A9A9;
+            }
+
+            /* Form Styles */
+            .inquiry-form {
+                display: flex;
+                flex-direction: column;
+                gap: 25px;
+            }
+
+            .form-group {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .form-group label {
+                font-size: 16px;
+                font-weight: 400;
+                color: #fff;
+            }
+
+            .required {
+                color: #F90305;
+                margin-left: 2px;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                background: transparent;
+                border: none;
+                border-bottom: 1px solid #A9A9A9;
+                padding: 12px 0;
+                color: #fff;
+                font-size: 16px;
+                font-weight: 400;
+                transition: border-color 0.3s ease;
+                font-family: inherit;
+            }
+
+            .form-group input::placeholder,
+            .form-group textarea::placeholder {
+                color: #A9A9A9;
+            }
+
+            .form-group input:focus,
+            .form-group textarea:focus {
+                outline: none;
+                border-bottom-color: #F90305;
+            }
+
+            .form-group textarea {
+                resize: vertical;
+                min-height: 100px;
+            }
+
+            /* Checkbox Group */
+            .checkbox-group {
+                margin-top: 5px;
+            }
+
+            .checkbox-label {
+                display: flex;
+                align-items: flex-start;
+                gap: 12px;
+                cursor: pointer;
+                font-size: 14px;
+                line-height: 1.5;
+            }
+
+            .checkbox-label input[type="checkbox"] {
+                width: 20px;
+                height: 20px;
+                min-width: 20px;
+                accent-color: #CC0000;
+                cursor: pointer;
+                margin-top: 2px;
+                border: none;
+            }
+
+            .checkbox-text {
+                font-weight: 600;
+                color: #A9A9A9;
+            }
+
+            .checkbox-text a {
+                color: #A9A9A9;
+                text-decoration: underline;
+                transition: color 0.2s ease;
+            }
+
+            .checkbox-text a:hover {
+                color: #F90305;
+            }
+
+            /* Submit Button */
+            .submit-inquiry-btn {
+                background: #F90305;
+                color: #fff;
+                border: none;
+                padding: 16px 32px;
+                font-size: 16px;
+                font-weight: 600;
+                border-radius: 14px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                margin-top: 10px;
+            }
+
+            .submit-inquiry-btn:hover {
+                background: #d90204;
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(249, 3, 5, 0.3);
+            }
+
+            /* Response Time */
+            .response-time {
+                text-align: center;
+                font-size: 16px;
+                font-weight: 400;
+                color: #A9A9A9;
+                margin-top: 40px;
+            }
+
+            /* Responsive Styles */
+            @media (max-width: 768px) {
+                .inquiry-panel {
+                    max-width: 100%;
+                }
+
+                .inquiry-panel-content {
+                    padding: 30px 20px;
+                }
+
+                .inquiry-panel-header h2 {
+                    font-size: 26px;
+                }
+
+                .inquiry-panel-header p {
+                    font-size: 14px;
+                }
+
+                .close-inquiry-btn {
+                    top: 20px;
+                    right: 20px;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .inquiry-panel-content {
+                    padding: 25px 16px;
+                }
+
+                .inquiry-panel-header h2 {
+                    font-size: 24px;
+                }
+
+                .form-group input,
+                .form-group textarea {
+                    font-size: 14px;
+                }
+
+                .submit-inquiry-btn {
+                    padding: 14px 24px;
+                    font-size: 15px;
+                }
+            }
+
+            /* Scrollbar Styling for Panel */
+            .inquiry-panel::-webkit-scrollbar {
+                width: 6px;
+            }
+
+            .inquiry-panel::-webkit-scrollbar-track {
+                background: #1a1a1a;
+            }
+
+            .inquiry-panel::-webkit-scrollbar-thumb {
+                background: #404040;
+                border-radius: 3px;
+            }
+
+            .inquiry-panel::-webkit-scrollbar-thumb:hover {
+                background: #555;
+            }
         </style>
         <style>
-@import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap');
-</style>
+            @import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+        </style>
         <style>
-        
-  @media (max-width: 1200px) {
-    .hide-below-1200 {
-      display: none !important;
-    }
-  }
-</style>
+            @media (max-width: 1200px) {
+                .hide-below-1200 {
+                    display: none !important;
+                }
+            }
+        </style>
         <header class="site-header bg-white site-header--absolute is--white py-3" id="sticky-menu">
             <div class="container-default">
                 <div class="flex items-center justify-between gap-x-8">
@@ -84,16 +391,16 @@ $services = Service::all();
 
                                         {{-- <li class="sub-menu--item">
                                             <a href="{{ url('/web') }}">Web Development</a>
-                                        </li>
-                                        <li class="sub-menu--item">
-                                            <a href="{{ url('/software') }}">Software Development</a>
-                                        </li>
-                                        <li class="sub-menu--item">
-                                            <a href="{{ url('/aiDev') }}">AI Development</a>
-                                        </li>
-                                        <li class="sub-menu--item">
-                                            <a href="{{ url('/blockchain') }}">Blockchain Development</a>
-                                        </li> --}}
+                                </li>
+                                <li class="sub-menu--item">
+                                    <a href="{{ url('/software') }}">Software Development</a>
+                                </li>
+                                <li class="sub-menu--item">
+                                    <a href="{{ url('/aiDev') }}">AI Development</a>
+                                </li>
+                                <li class="sub-menu--item">
+                                    <a href="{{ url('/blockchain') }}">Blockchain Development</a>
+                                </li> --}}
                                     </ul>
                                 </li>
                                 <li class="nav-item nav-item-has-children">
@@ -108,19 +415,19 @@ $services = Service::all();
                                         @endforeach
                                         {{-- <li class="sub-menu--item">
                                             <a href="{{ url('/dms') }}">Document Management System (DMS)</a>
-                                        </li>
-                                        <li class="sub-menu--item">
-                                            <a href="{{ url('/crm') }}">AI Based Customer Relationship Management</a>
-                                        </li>
-                                        <li class="sub-menu--item">
-                                            <a href="{{ url('/ai') }}">AI Chatbot</a>
-                                        </li>
-                                        <li class="sub-menu--item">
-                                            <a href="{{ url('/hrm') }}">Human Resource Information System</a>
-                                        </li>
-                                        <li class="sub-menu--item">
-                                            <a href="{{ url('/ecommerce') }}">E-Commerce solutions</a>
-                                        </li> --}}
+                            </li>
+                            <li class="sub-menu--item">
+                                <a href="{{ url('/crm') }}">AI Based Customer Relationship Management</a>
+                            </li>
+                            <li class="sub-menu--item">
+                                <a href="{{ url('/ai') }}">AI Chatbot</a>
+                            </li>
+                            <li class="sub-menu--item">
+                                <a href="{{ url('/hrm') }}">Human Resource Information System</a>
+                            </li>
+                            <li class="sub-menu--item">
+                                <a href="{{ url('/ecommerce') }}">E-Commerce solutions</a>
+                            </li> --}}
                                     </ul>
                                 </li>
                                 <li class="nav-item">
@@ -129,7 +436,7 @@ $services = Service::all();
 
                                 {{-- <li class="nav-item">
                                     <a href="{{ route('blog') }}" class="nav-link-item">Blogs</a>
-                                </li> --}}
+                            </li> --}}
                                 <li class=" contact-on-mobile px-4">
                                     <a href="{{ url('contact') }}"
                                         class="btn is-blue is-rounded btn-animation group mt-2">
@@ -174,7 +481,7 @@ $services = Service::all();
                                     </p>
                                 </div>
                                 <div class="">
-                                    <a href="{{url('/contact')}}"
+                                    <a href="{{ url('/contact') }}"
                                         class="btn is-lime is-large btn-animation group inline-block rounded-[3px]"><span>Contact
                                             us</span></a>
                                 </div>
@@ -206,7 +513,9 @@ $services = Service::all();
                                         <!-- Footer About Text -->
                                         <div class="lg:max-w-[416px]">
                                             <!--Kode Tech (Pvt) Ltd is a well-established and renowned software development company with a rich legacy spanning over 14 years. -->
-                                            We innovate the future with cutting-edge web development, AI solutions, and digital transformation services. Trusted by businesses worldwide, we deliver with a strong focus on quality and customer satisfaction.
+                                            We innovate the future with cutting-edge web development, AI solutions, and
+                                            digital transformation services. Trusted by businesses worldwide, we deliver
+                                            with a strong focus on quality and customer satisfaction.
                                         </div>
                                         <!-- Footer Mail -->
                                         <a href="mailto:info@kodetech.co"
@@ -258,8 +567,8 @@ $services = Service::all();
                                     <ul class="flex flex-col gap-y-[10px] capitalize footer-ul">
                                         {{-- <li>
                                             <a href="{{ url('/') }}"
-                                                class="hover:opcity-100 text-[#939393]/80 underline-offset-4 transition-all duration-300 ease-linear hover:underline"
-                                                style="color: #939393 !important">Home</a>
+                                        class="hover:opcity-100 text-[#939393]/80 underline-offset-4 transition-all duration-300 ease-linear hover:underline"
+                                        style="color: #939393 !important">Home</a>
                                         </li> --}}
                                         <li>
                                             <a href="{{ url('about') }}"
@@ -268,18 +577,18 @@ $services = Service::all();
                                         </li>
                                         {{-- <li>
                                             <a href="{{ url('/#services') }}"
-                                                class="hover:opcity-100 text-[#939393]/80 underline-offset-4 transition-all duration-300 ease-linear hover:underline"
-                                                style="color: #939393 !important">Our Services</a>
+                                        class="hover:opcity-100 text-[#939393]/80 underline-offset-4 transition-all duration-300 ease-linear hover:underline"
+                                        style="color: #939393 !important">Our Services</a>
                                         </li> --}}
                                         {{-- <li>
                                             <a href="{{ url('/#products') }}"
-                                                class="hover:opcity-100 text-[#939393]/80 underline-offset-4 transition-all duration-300 ease-linear hover:underline"
-                                                style="color: #939393 !important">Our Products</a>
+                                        class="hover:opcity-100 text-[#939393]/80 underline-offset-4 transition-all duration-300 ease-linear hover:underline"
+                                        style="color: #939393 !important">Our Products</a>
                                         </li> --}}
                                         {{-- <li>
                                             <a href="{{ url('our-projects') }}"
-                                                class="hover:opcity-100 text-[#939393]/80 underline-offset-4 transition-all duration-300 ease-linear hover:underline"
-                                                style="color: #939393 !important">Our Projects</a>
+                                        class="hover:opcity-100 text-[#939393]/80 underline-offset-4 transition-all duration-300 ease-linear hover:underline"
+                                        style="color: #939393 !important">Our Projects</a>
                                         </li> --}}
                                         <li>
                                             <a href="{{ url('/blog') }}"
@@ -337,15 +646,14 @@ $services = Service::all();
                                     <!-- Footer Navbar -->
                                     <ul class="flex flex-col gap-y-[10px] capitalize footer-ul">
                                         @foreach ($products as $product)
-                                       
-                                        <li>
-                                            <a href="{{ route('product.show', $product->slug) }}"  
-                                                rel="noopener noreferrer"
-                                                class="hover:opcity-100 text-[#FDFBF9]/80 underline-offset-4 transition-all duration-300 ease-linear hover:underline"
-                                                style="color: #939393 !important">{{$product->product_name}}</a>
-                                        </li>
+                                            <li>
+                                                <a href="{{ route('product.show', $product->slug) }}"
+                                                    rel="noopener noreferrer"
+                                                    class="hover:opcity-100 text-[#FDFBF9]/80 underline-offset-4 transition-all duration-300 ease-linear hover:underline"
+                                                    style="color: #939393 !important">{{ $product->product_name }}</a>
+                                            </li>
                                         @endforeach
-                                        
+
                                     </ul>
                                 </div>
                                 <!-- Footer Widget Item -->
@@ -394,7 +702,142 @@ $services = Service::all();
 
     </div>
 
+    <!-- Floating Inquiry Button -->
+    <button id="inquiryBtn" class="inquiry-btn">
+        <span class="btn-text">INQUIRIES</span>
+        <span class="btn-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="19" viewBox="0 0 25 19"
+                fill="none">
+                <path
+                    d="M12.3497 0.949997L13.6797 2.375L6.64969 9.5L13.6797 16.625L12.3497 18.05L3.79969 9.5L12.3497 0.949997Z"
+                    fill="#F90305" />
+                <path
+                    d="M18.2872 0.949997L19.6172 2.375L12.5872 9.5L19.6172 16.625L18.2872 18.05L9.73719 9.5L18.2872 0.949997Z"
+                    fill="#F90305" />
+            </svg>
+        </span>
+    </button>
+
+    <!-- Inquiry Overlay -->
+    <div id="inquiryOverlay" class="inquiry-overlay"></div>
+
+    <!-- Inquiry Side Panel -->
+    <div id="inquiryPanel" class="inquiry-panel">
+        <div class="inquiry-panel-content">
+            <!-- Close Button -->
+            <button id="closeInquiry" class="close-inquiry-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 6L6 18M6 6L18 18" stroke="white" stroke-width="2" stroke-linecap="round" />
+                </svg>
+            </button>
+
+            <!-- Panel Header -->
+            <div class="inquiry-panel-header">
+                <h2>Get in Touch</h2>
+                <p>Have a question? Fill out the form below and we'll get back to you as soon as possible.</p>
+            </div>
+
+            @if (session('success'))
+                <div style="color: #00ff99; margin-bottom: 15px;">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            @if ($errors->any())
+                <div style="color: #ff4d4d; margin-bottom: 15px;">
+                    Please fix the errors and try again.
+                </div>
+            @endif
+
+            <!-- Inquiry Form -->
+            <form action="{{ route('inquiry.submit') }}" method="POST" class="inquiry-form">
+                @csrf
+
+                <div class="form-group">
+                    <label for="name">Name<span class="required">*</span></label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="contact">Contact No<span class="required">*</span></label>
+                    <input type="tel" id="contact" name="contact" pattern="^\+?[0-9]{7,15}$" maxlength="16"
+                        placeholder="+94 7 1234 5678" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email<span class="required">*</span></label>
+                    <input type="email" id="email" name="email" placeholder="your.email@example.com"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message<span class="required">*</span></label>
+                    <textarea id="message" name="message" rows="5" placeholder="Tell us more about your inquiry..." required></textarea>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" required>
+                        <span class="checkbox-text">I agree to the <a href="{{ url('/privacy') }}"
+                                target="_blank">privacy policy</a> and consent to the handling of my personal
+                            information.</span>
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <div class="g-recaptcha" data-sitekey="6LdUdJ0rAAAAAATp6GXxQOSnhz6E_yOdR7Uj3f47">
+                    </div>
+
+                    @if ($errors->has('g-recaptcha-response'))
+                        <p style="color:red;">
+                            {{ $errors->first('g-recaptcha-response') }}
+                        </p>
+                    @endif
+                </div>
+
+                <button type="submit" class="submit-inquiry-btn">Submit Inquiry</button>
+
+                <p class="response-time">We typically respond within 24 hours</p>
+            </form>
+        </div>
+    </div>
+
+
     <x-scripts />
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <!-- for inquiry side panel -->
+    <script>
+        const inquiryBtn = document.getElementById('inquiryBtn');
+        const inquiryPanel = document.getElementById('inquiryPanel');
+        const inquiryOverlay = document.getElementById('inquiryOverlay');
+        const closeInquiry = document.getElementById('closeInquiry');
+
+        inquiryBtn.addEventListener('click', () => {
+            inquiryPanel.classList.add('active');
+            inquiryOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent body scroll when panel is open
+        });
+
+        closeInquiry.addEventListener('click', closePanel);
+        inquiryOverlay.addEventListener('click', closePanel);
+
+        function closePanel() {
+            inquiryPanel.classList.remove('active');
+            inquiryOverlay.classList.remove('active');
+            document.body.style.overflow = ''; // Restore body scroll
+        }
+
+        // Close panel on ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && inquiryPanel.classList.contains('active')) {
+                closePanel();
+            }
+        });
+    </script>
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const currentUrl = window.location.pathname;
